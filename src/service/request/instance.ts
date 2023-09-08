@@ -47,16 +47,17 @@ export default class CustomAxiosInstance {
     this.retryQueues = [];
   }
 
-  /** 设置请求拦截器 */
+  /** Đặt trình chặn yêu cầu */
   setInterceptor() {
+    debugger
     this.instance.interceptors.request.use(
       async config => {
         const handleConfig = { ...config };
         if (handleConfig.headers) {
-          // 数据转换
+         // chuyển đổi dữ liệu
           const contentType = handleConfig.headers['Content-Type'] as UnionKey.ContentType;
           handleConfig.data = await transformRequestData(handleConfig.data, contentType);
-          // 设置token
+         // Đặt mã thông báo
           handleConfig.headers.Authorization = localStg.get('token') || '';
         }
         return handleConfig;

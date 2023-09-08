@@ -14,7 +14,7 @@ export async function handleServiceResult<T = any>(error: Service.RequestError |
   return success;
 }
 
-/** 请求结果的适配器：用于接收适配器函数和请求结果 */
+/** Bộ điều hợp kết quả yêu cầu: dùng để nhận chức năng bộ điều hợp và kết quả yêu cầu */
 export function adapter<T extends Service.ServiceAdapter>(
   adapterFun: T,
   ...args: Service.MultiRequestResult<Parameters<T>>
